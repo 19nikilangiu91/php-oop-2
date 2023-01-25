@@ -7,15 +7,18 @@ class Product
     private $name;
     private $brand;
 
+    private $description;
+
     private $category;
 
-    public $price;
+    private $price;
 
     // all'interno della classe definiamo un "__construct".
-    public function __construct($name, $brand, $category, $price)
+    public function __construct($name, $brand, $description, $category, $price)
     {
         $this->setName($name);
         $this->setBrand($brand);
+        $this->setDescription($description);
         $this->setCategory($category);
         $this->setPrice($price);
 
@@ -41,6 +44,16 @@ class Product
         $this->brand = $brand;
     }
 
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
     public function getCategory()
     {
         return $this->category;
@@ -60,23 +73,56 @@ class Product
     {
         $this->price = $price;
     }
-
     public function getHtml()
     {
         return
             "Name: " . $this->getName() . "<br>"
             . "Brand: " . $this->getBrand() . "<br>"
-            . "Class: " . $this->getCategory() . "<br>"
+            . "Description: " . $this->getDescription() . "<br>"
+            . "Category: " . $this->getCategory() . "<br>"
             . "Price: " . $this->getPrice() . "<br>";
     }
 }
 
-// Food
-$treatsCat = new Product("Treats for Cat", "Friskies", "Food", 20);
-$treatsDog = new Product("Treats for Dog", "Whiskas", "Food", 10);
+class Food extends Product
+{
+    private $quantity;
 
-echo $treatsCat->getHtml();
+    public function __construct($name, $brand, $description, $category, $price, $quantity)
+    {
+        $this->setQuantity($quantity);
+        parent::__construct($name, $brand, $description, $category, $price);
+    }
+
+    public function getQuantity()
+    {
+        return $this->quantity;
+    }
+
+    public function setQuantity($quantity)
+    {
+        $this->quantity = $quantity;
+    }
+
+    public function getQuantityHtml()
+    {
+        return "Quantity: " . $this->getQuantity() . "<br>";
+    }
+
+    public function getHtml()
+    {
+        return parent::getHtml() . $this->getQuantityHtml();
+    }
+
+}
+
+
+// Food Section
+$foodCat = new Food("Treats for Cat", "Friskies", "Good treats for your Cat", "Food", 20, 150 . "gr");
+$foodDog = new Food("Treats for Dog", "Whiskas", "Good treats for your Dog", "Food", 10, 200 . "gr");
+
+echo $foodCat->getHtml();
 echo "<br>";
-echo $treatsDog->getHtml();
+echo $foodDog->getHtml();
 
 ?>
