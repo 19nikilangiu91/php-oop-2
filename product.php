@@ -84,14 +84,15 @@ class Product
     }
 }
 
+// Definiamo una classe "Food" e la estendiamo a "Product".
 class Food extends Product
 {
     private $quantity;
 
     public function __construct($name, $brand, $description, $category, $price, $quantity)
     {
-        $this->setQuantity($quantity);
         parent::__construct($name, $brand, $description, $category, $price);
+        $this->setQuantity($quantity);
     }
 
     public function getQuantity()
@@ -116,13 +117,35 @@ class Food extends Product
 
 }
 
+// Definiamo una classe "Toy" e la estendiamo a "Product".
+class Toy extends Product
+{
+    public function __construct($name, $brand, $description, $category, $price)
+    {
+        parent::__construct($name, $brand, $description, $category, $price);
+
+    }
+
+    public function getHtml()
+    {
+        return parent::getHtml();
+    }
+}
 
 // Food Section
-$foodCat = new Food("Treats for Cat", "Friskies", "Good treats for your Cat", "Food", 20, 150 . "gr");
-$foodDog = new Food("Treats for Dog", "Whiskas", "Good treats for your Dog", "Food", 10, 200 . "gr");
+$foodCat = new Food("Treats for Cat", "Friskies", "Good treats for your Cat", "Cat", 20 . "€", 150 . "gr");
+$foodDog = new Food("Treats for Dog", "Whiskas", "Good treats for your Dog", "Dog", 10 . "€", 200 . "gr");
+
+// Toy Section
+$toyCat = new Toy("Scratching Post", "Friskies", "Good Toy for your Cat", "Cat", 15 . "€");
+$toyDog = new Toy("Plastic Bone", "Whiskas", "Good Toy for your Dog", "Dog", 25 . "€");
 
 echo $foodCat->getHtml();
 echo "<br>";
 echo $foodDog->getHtml();
+echo "<br>";
+echo $toyCat->getHtml();
+echo "<br>";
+echo $toyDog->getHtml();
 
 ?>
