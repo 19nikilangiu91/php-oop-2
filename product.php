@@ -148,28 +148,36 @@ class Kennel extends Product
 }
 
 // Food Section
-$foodCat = new Food("Treats for Cat", "Friskies", "Good treats for your Cat", "Cat", 20 . "€", 150 . "gr");
-$foodDog = new Food("Treats for Dog", "Whiskas", "Good treats for your Dog", "Dog", 10 . "€", 200 . "gr");
+$foods = [
+    new Food("Treats for Cat", "Friskies", "Good treats for your Cat", "Cat", 20 . "€", 150 . "gr"),
+    new Food("Treats for Dog", "Whiskas", "Good treats for your Dog", "Dog", 10 . "€", 200 . "gr")
+];
 
 // Toy Section
-$toyCat = new Toy("Scratching Post", "Friskies", "Good Toy for your Cat", "Cat", 15 . "€");
-$toyDog = new Toy("Plastic Bone", "Whiskas", "Good Toy for your Dog", "Dog", 25 . "€");
+$toys = [
+    new Toy("Scratching Post", "Friskies", "Good Toy for your Cat", "Cat", 15 . "€"),
+    new Toy("Plastic Bone", "Whiskas", "Good Toy for your Dog", "Dog", 25 . "€"),
+];
 
 // Kennel Section
-$kennelCat = new Toy("Wood Cathouse", "Wood-Company", "Good Wood Kennel for your Cat", "Cat", 50 . "€");
-$kennelDog = new Toy("Metal Doghouse", "Metal-Company", "Good Metal Kennel for your Dog", "Dog", 75 . "€");
+$kennels = [
+    new Kennel("Wood Cathouse", "Wood-Company", "Good Wood Kennel for your Cat", "Cat", 50 . "€"),
+    new Kennel("Metal Doghouse", "Metal-Company", "Good Metal Kennel for your Dog", "Dog", 75 . "€"),
+];
 
-// Stampiamo su schermo i risultati.
-echo $foodCat->getHtml();
-echo "<br>";
-echo $foodDog->getHtml();
-echo "<br>";
-echo $toyCat->getHtml();
-echo "<br>";
-echo $toyDog->getHtml();
-echo "<br>";
-echo $kennelCat->getHtml();
-echo "<br>";
-echo $kennelDog->getHtml();
+// Creo un ciclo "foreach" per stampare i contenuti nell'array "$foods"
+foreach ($foods as $food) {
+    echo $food->getHtml() . "<br>";
+}
+
+// Creo un ciclo "foreach" per stampare i contenuti nell'array "$toys"
+foreach ($toys as $toy) {
+    echo $toy->getHtml() . "<br>";
+}
+
+// Creo un ciclo "foreach" per stampare i contenuti nell'array "$kennels"
+foreach ($kennels as $kennel) {
+    echo $kennel->getHtml() . "<br>";
+}
 
 ?>
